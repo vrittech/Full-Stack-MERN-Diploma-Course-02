@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day 3</title>
+  </head>
+  <body>
+    <!-- simple table -->
+    <table border="1">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Arjun</td>
+          <td>Ghimire</td>
+        </tr>
+        <tr>
+          <td>Milan</td>
+          <td>Pandey</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br />
+    <br />
+
+    <!-- colspan example -->
+    <table border="1">
+      <thead>
+        <tr>
+          <th colspan="2">Fullname</th>
+          <th>Address</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Arjun</td>
+          <td>Ghimire</td>
+          <td>Ktm</td>
+        </tr>
+        <tr>
+          <td>Milan</td>
+          <td>Pandey</td>
+          <td>Banepa</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br />
+    <br />
+    <!-- rowspan example -->
+    <table border="1">
+      <thead>
+        <tr>
+          <th rowspan="2">A</th>
+          <th>B</th>
+        </tr>
+        <tr>
+          <th>C</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Arjun</td>
+          <td>Ghimire</td>
+        </tr>
+        <tr>
+          <td>Milan</td>
+          <td>Pandey</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- homework -->
+    <!-- https://iwebchk.com/img/nestedtable.png -->
+
+    <br />
+    <br />
+    <!-- form -->
+    <fieldset>
+      <legend>Personal Details</legend>
+      <form action="thankyou.html" method="get">
+        <label>City:</label>
+        <select name="city">
+          <option value="">Select city</option>
+          <option value="ktm">Kathmandu</option>
+          <option value="bkt">Bhaktapur</option>
+          <option value="pkr">Pokhara</option>
+        </select>
+        <br />
+        <label>First name:</label>
+        <input
+          required
+          type="text"
+          onchange=""
+          value=""
+          placeholder="Enter your first name"
+          name="firstname"
+        />
+        <br />
+        <label>Last name:</label>
+        <input
+          type="text"
+          value=""
+          name="lastname"
+          placeholder="Enter your last name"
+        />
+        <br />
+        <br />
+        <label>Gender:</label>
+        <input name="gender" type="radio" value="male" /> Male
+        <input name="gender" value="female" type="radio" /> Female
+        <br />
+        <br />
+        <label>Email:</label>
+        <input
+          required
+          type="email"
+          value=""
+          name="email"
+          placeholder="Enter your email"
+        />
+        <br />
+        <br />
+        <label>Date of Birth:</label>
+        <input type="date" value="" name="dob" />
+        <br />
+        <br />
+        <label>Address:</label>
+        <!-- dynamic width height -->
+        <!-- <textarea cols="120" rows="100"></textarea> -->
+        <textarea name="address"></textarea>
+        <br />
+        <br />
+        <button>Submit</button>
+      </form>
+    </fieldset>
+  </body>
+</html>
