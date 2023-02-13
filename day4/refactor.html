@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* .header,
+      .navigation-menu,
+      .left-content,
+      .right-content,
+      .main-content,
+      .footer {
+        border: 2px solid #000;
+      } */
+
+      .border-solid {
+        border: 2px solid #000;
+      }
+
+      .text-center {
+        text-align: center;
+      }
+
+      .text-color-white {
+        color: #fff;
+      }
+
+      .header {
+        background-color: yellow;
+      }
+      .header h1 {
+        color: green;
+      }
+      .navigation-menu {
+        margin: 10px auto;
+        background-color: blue;
+      }
+
+      .content-wrapper {
+        height: 400px;
+        display: flex;
+        justify-content: space-between;
+      }
+      .left-content {
+        height: 400px;
+        background-color: brown;
+        width: 100%;
+      }
+
+      .right-content {
+        height: 400px;
+        width: 100%;
+        background-color: blueviolet;
+      }
+      .main-content {
+        height: 400px;
+        width: 100%;
+        background-color: brown;
+        margin: auto 10px;
+      }
+      .footer {
+        margin: 10px auto;
+        background-color: blue;
+      }
+
+      .text-center-with-flex {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- header -->
+    <div class="header border-solid text-center">
+      <h1>Header</h1>
+    </div>
+    <!-- navigation menu -->
+    <div class="navigation-menu border-solid text-center">
+      <h1 class="text-color-white">Navigation Menu</h1>
+    </div>
+    <!-- content -->
+    <div class="content-wrapper">
+      <div class="left-content border-solid text-center-with-flex">
+        <h1 class="text-color-white">Content</h1>
+      </div>
+      <div class="main-content border-solid text-center-with-flex">
+        <h1 class="text-color-white">Main Content</h1>
+      </div>
+      <div class="right-content border-solid text-center-with-flex">
+        <h1 class="text-color-white">Content</h1>
+      </div>
+    </div>
+
+    <!-- footer -->
+    <div class="footer border-solid text-center">
+      <h1 class="text-color-white">Footer</h1>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .header {
+        border: 2px solid #000;
+        background-color: yellow;
+      }
+      .header h1 {
+        text-align: center;
+        color: green;
+      }
+      .navigation-menu {
+        border: 2px solid #000;
+        margin: 10px auto;
+        background-color: blue;
+      }
+      .navigation-menu h1 {
+        text-align: center;
+        color: #fff;
+      }
+      .content-wrapper {
+        height: 400px;
+        display: flex;
+        justify-content: space-between;
+      }
+      .left-content {
+        height: 400px;
+        border: 2px solid #000;
+        background-color: brown;
+        width: 100%;
+      }
+      .content h1 {
+        color: #fff;
+        text-align: center;
+      }
+      .right-content {
+        height: 400px;
+        width: 100%;
+        border: 2px solid #000;
+        background-color: blueviolet;
+      }
+      .main-content {
+        height: 400px;
+        width: 100%;
+        border: 2px solid #000;
+        background-color: brown;
+        margin: auto 10px;
+      }
+      .footer {
+        border: 2px solid #000;
+        margin: 10px auto;
+        background-color: blue;
+      }
+      .footer h1 {
+        text-align: center;
+        color: #fff;
+      }
+
+      .text-center {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- header -->
+    <div class="header">
+      <h1>Header</h1>
+    </div>
+    <!-- navigation menu -->
+    <div class="navigation-menu">
+      <h1>Navigation Menu</h1>
+    </div>
+    <!-- content -->
+    <div class="content-wrapper">
+      <div class="left-content text-center">
+        <h1>Content</h1>
+      </div>
+      <div class="main-content text-center">
+        <h1>Main Content</h1>
+      </div>
+      <div class="right-content text-center">
+        <h1>Content</h1>
+      </div>
+    </div>
+
+    <!-- footer -->
+    <div class="footer">
+      <h1>Footer</h1>
+    </div>
+  </body>
+</html>
