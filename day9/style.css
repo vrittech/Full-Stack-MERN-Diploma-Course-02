@@ -1,0 +1,23 @@
+/* custom fonts */
+
+@font-face {
+  font-family: 'MRegular';
+  src: url(fonts/Montserrat-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'MThin';
+  src: url(fonts/Montserrat-Thin.ttf);
+}
+
+h1{
+  font-family: 'MRegular',sans-serif;
+}
+
+
+h2{
+  font-family: 'MThin', sans-serif;
+}
+
+/* grid */
+
