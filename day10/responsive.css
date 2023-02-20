@@ -1,0 +1,339 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+body{
+  font-family: 'Montserrat',sans-serif;
+}
+
+.top-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #f5f5f5;
+}
+.top-header span{
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.top-header-left,.top-header-right{
+  display: flex;
+}
+
+.icon-wrapper{
+  margin-right: 8px;
+  display: flex;
+  align-items: center;
+  border-left: 1px solid #e7e9ec;
+}
+.icon-wrapper span{
+  margin: 0 8px;
+}
+.icon-wrapper i{
+ margin-left: 12px;
+}
+
+.top-header-right .icon-wrapper:nth-child(2){
+  border-left: none;
+}
+
+.navbar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #f5f5f5;
+}
+.navbar-left{
+  display: flex; 
+}
+.navbar-left h2 {
+  margin-right: 20px;
+}
+
+.navbar-left h2 span {
+  color: #e33825;
+  font-size: 14px;
+  margin-left: -5px;
+}
+
+.navbar-center nav ul {
+  list-style: none;
+  display: flex;
+}
+.navbar-center nav li{
+  padding: 0 16px;
+}
+
+.navbar-center nav a {
+  text-decoration: none;
+  font-size: 14px;
+  color: #1a1a1a;
+}
+/* start searhbar */
+.search-wrapper{
+  position: relative;
+}
+
+.search-wrapper input{
+  padding: 16px 16px  16px 32px;
+  outline: none;
+  border: 1px solid #f5f5f5;
+}
+
+.search-wrapper i {
+  color: #808080;
+  position: absolute;
+  top: 16px;
+  left: 10px;
+}
+/*  end searchbar */
+
+.information {
+  background-color: #262626;
+  padding: 16px;
+}
+.information p{
+  color: #929292;
+  text-align: center;
+  text-transform:uppercase
+}
+
+
+.bg-wrapper {
+  padding: 60px;
+}
+.background{
+  height: 280px;
+  background-image: url('https://images.pexels.com/photos/389818/pexels-photo-389818.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+  display: flex;
+  flex-direction: column-reverse;
+  padding: 60px;
+  color: #fff;
+  /* explore other background properties */
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.background .sale{
+  font-weight: 300;
+  font-size: 12px;
+}
+.background .title{
+  line-height: 60px;
+  font-size: 40px;
+  font-weight: 500;
+}
+
+.background .info {
+  font-size: 14px;
+}
+
+.shopping-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+  margin-top: 30px;
+  align-items: center;
+}
+
+.shopping-wrapper button{
+  outline: none;
+  padding: 8px 22px;
+  background-color: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 10px;
+}
+
+.mastercard-wrapper{
+  padding: 60px;
+  display: flex;
+}
+
+.mastercard{
+  flex: 0.4;
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(1.4px);
+  -webkit-backdrop-filter: blur(1.4px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 260px;
+}
+
+.mastercard-header {
+  font-size: 20px;
+}
+.mastercard-header span{
+  font-size: 12px;
+  color: #e33825 ;
+}
+
+.mastercard-body .number{
+  font-size: 30px;
+}
+
+.mastercard-body span{
+  margin: 0 10px;
+}
+
+.mastercard-body span:nth-child(1){
+  margin-left: 0;
+}
+
+.mastercard-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.mastercard-info{
+  display: flex;
+  justify-content: space-between;
+  flex: 0.7
+}
+
+.mastercard-details h4{
+  color: #44464a;
+  font-weight: 200;
+  line-height: 30px;
+  font-size: 14px;
+}
+
+.mastercard-details p{
+  color: #000;
+}
+
+.mastercard-logo {
+ display: flex;
+}
+
+.mastercard-circle{
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+}
+.first{
+  background-color: rgba(241, 44, 43,0.5);
+  margin-right: -10px;
+}
+
+.second{
+  background-color: rgba(241, 175, 43,0.5);
+  margin-left: -10px;
+}
+
+.mastercard-egift,.mastercard-shopping{
+  display: flex;
+  flex: 0.3;
+}
+
+
+@media screen and (max-width: 600px) {
+  .top-header{
+    display: flex;  
+  }
+  .top-header span{
+    font-size: 8px;
+  }
+  .icon-wrapper{
+    font-size: 8px;
+  }
+
+  .navbar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    gap: 20px;
+  }
+ 
+  .navbar-left h2 {
+    font-size: 16px;
+  }
+
+  .navbar-center nav ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .navbar-center nav li{
+    padding: 2px 0;
+  }
+  
+  .navbar-center nav a {
+    font-size: 8px;
+  }
+
+  .search-wrapper input{
+    padding: 6px;
+    outline: none;
+    border: 1px solid #f5f5f5;
+    width: 300px;
+  }
+  
+  .search-wrapper i {
+    top: 10px;
+    left: 10px;
+    font-size: 8px;
+  }
+
+  .information {
+    padding: 8px;
+  }
+  .information p{
+   font-size: 10px;
+  }
+
+  .bg-wrapper {
+    padding: 10px;
+  }
+  .background{
+    height: 180px;
+    padding: 10px;
+
+  }
+
+  .mastercard-wrapper{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+
+.mastercard-header {
+  font-size: 16px;
+}
+.mastercard-header span{
+  font-size: 12px;
+}
+
+.mastercard-body .number{
+  font-size: 16px;
+}
+
+
+.mastercard-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.mastercard-info{
+  display: flex;
+  justify-content: space-between;
+  flex: 0.7
+}
+
+.mastercard-details h4{
+  font-size: 10px;
+}
+
+}
