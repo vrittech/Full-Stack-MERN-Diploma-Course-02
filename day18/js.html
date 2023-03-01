@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS</title>
+  </head>
+  <body>
+    <h1 id="header" class="header">Form</h1>
+    <input type="text" id="name" placeholder="Enter your name" />
+    <button onclick="submitBtn()">Click</button>
+    <p id="value"></p>
+
+    <!-- <button onclick="buttonClick()">Click</button> -->
+
+    <script>
+      const input = document.getElementById("name");
+      const inputValue = document.getElementById("value");
+
+      function submitBtn() {
+        inputValue.innerHTML = input.value;
+      }
+      // function buttonClick() {
+      //   const header1 = document.getElementById("header");
+      //   // const header2 = document.querySelector("h1");
+      //   // const header3 = document.querySelector("#header");
+      //   // const header4 = document.getElementsByClassName("header");
+      //   // const header5 = document.querySelector(".header");
+
+      //   header1.style.color = "red";
+      //   header1.style.fontSize = "20px";
+      // }
+    </script>
+  </body>
+</html>
