@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day 19</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <fieldset>
+      <legend>Personal Details</legend>
+      <form id="form" action="thankyou.html" method="post">
+        <label>City:</label>
+        <select id="city" name="city">
+          <option value="">Select city</option>
+          <option value="ktm">Kathmandu</option>
+          <option value="bkt">Bhaktapur</option>
+          <option value="pkr">Pokhara</option>
+        </select>
+        <span id="cityVal" class="error"></span>
+        <br />
+        <label>First name:</label>
+        <input
+          id="firstName"
+          type="text"
+          onchange=""
+          value=""
+          placeholder="Enter your first name"
+          name="firstname"
+        />
+        <span id="firstNameVal" class="error"></span>
+        <br />
+        <label>Last name:</label>
+        <input
+          id="lastName"
+          type="text"
+          value=""
+          name="lastname"
+          placeholder="Enter your last name"
+        />
+        <br />
+        <br />
+        <label>Gender:</label>
+        <input id="gender1" name="gender" type="radio" value="male" /> Male
+        <input id="gender2" name="gender" value="female" type="radio" /> Female
+        <br />
+        <br />
+        <label>Email:</label>
+        <input
+          id="email"
+          type="email"
+          value=""
+          name="email"
+          placeholder="Enter your email"
+        />
+        <br />
+        <br />
+        <label>Date of Birth:</label>
+        <input id="dob" type="date" value="" name="dob" />
+        <br />
+        <br />
+        <label>Address:</label>
+        <!-- dynamic width height -->
+        <!-- <textarea cols="120" rows="100"></textarea> -->
+        <textarea id="address" name="address"></textarea>
+        <br />
+        <br />
+        <button type="submit">Submit</button>
+      </form>
+    </fieldset>
+
+    <div>
+      <p>City: <span class="city"></span></p>
+      <p>First Name: <span class="firstname"></span></p>
+      <p>Last Name: <span class="lastname"></span></p>
+      <p>Gender: <span class="gender"></span></p>
+      <p>Email: <span class="email"></span></p>
+      <p>DOB: <span class="dob"></span></p>
+      <p>Address: <span class="address"></span></p>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
