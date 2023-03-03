@@ -1,38 +1,39 @@
 // 1  destructor
 
-// const name = "Shyam";
+const name = "Shyam";
 
-// const information = {
-//   name: "Arjun",
-//   address: "KTM",
-//   getFullname: function () {
-//     return "Arjun Ghimire";
-//   },
-// };
+const information = {
+  name: "Arjun",
+  address: "KTM",
+  getFullname: function () {
+    return "Arjun Ghimire";
+  },
+};
 
-// const { name: firstName, address, getFullname } = information;
+console.log(information.address, information["address"]);
+const { name: firstname, address, getFullname } = information;
 
-// console.log(firstName, address, getFullname());
+console.log(firstname, address, getFullname());
 
 // //  2
 
-// const persons = ["Arjun", "Ram", "Shyam"];
+const persons = ["Arjun", "Ram", "Shyam"];
 
-// const [first, second, third] = persons;
+const [first, second, third] = persons;
 
-// const [, , data3] = persons;
-// console.log(data3);
+const [, , data3] = persons;
+console.log(data3);
 
 // 3
 
-// const firstName = "Arjun";
-// const lastName = "Ghimire";
+const firstName = "Arjun";
+const lastName = "Ghimire";
 
-// const fullname = firstName + " " + lastName;
-// const greeting = "Welcome " + fullname + ", Have a great day";
-// const greeting1 = `Welcome  ${fullname} , Have a great day`;
+const fullname = firstName + " " + lastName;
+const greeting = "Welcome " + fullname + ", Have a great day";
+const greeting1 = `Welcome  ${fullname} , Have a great day`;
 
-// console.log(greeting1);
+console.log(greeting1);
 
 //  4
 
@@ -47,7 +48,7 @@ const info = {
   age: 30,
 };
 
-// console.log(info);
+console.log(info);
 
 const person1 = {
   name: "Arjun",
