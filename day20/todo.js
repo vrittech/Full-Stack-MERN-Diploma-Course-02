@@ -13,7 +13,7 @@ function create(newData) {
     console.log(element);
     addItem.innerHTML = `
       <div id="item" class="${element}">
-        <p>${element}<p>
+        <p>${element}</p>
         <button class="${element}">Delete</button>
       </div>
     `;
@@ -29,7 +29,6 @@ function formSubmit() {
 
 lists.addEventListener("click", function (e) {
   items.forEach((element) => {
-    console.log();
     if (element.className === e.target.className) {
       element.remove();
     }
