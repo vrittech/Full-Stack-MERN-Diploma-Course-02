@@ -1,7 +1,5 @@
 import { useState } from "react";
 
-const names = ["Arjun", "Ram", "Hari", "Bhuwan"];
-
 function Counter() {
   const [name, setName] = useState("Arjun");
   const [counter, setCounter] = useState(0);
@@ -25,12 +23,8 @@ function Counter() {
       <h1>hello {name} </h1>
       <button onClick={clickme}>Click me</button>
       <h2>{counter}</h2>
-      <button onClick={decrease}>-</button>
+      <button onCliÍck={decrease}>-</button>
       <button onClick={increase}>+</button>
-
-      {names.map((element) => {
-        return <p>{element} </p>;
-      })}
     </div>
   );
 }
