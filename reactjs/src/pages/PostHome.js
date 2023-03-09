@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
+import CardItem from "../components/CardItem";
 
 const perPageItem = 10;
 
@@ -32,17 +33,7 @@ const PostHome = () => {
   return (
     <div>
       {todos.slice((page - 1) * perPageItem, perPageItem * page).map((todo) => {
-        return (
-          <Card style={{ width: "18rem" }}>
-            <Card.Body>
-              <Card.Title>{todo.id}</Card.Title>
-              <Card.Text>{todo.title}</Card.Text>
-              <Link to={`/posts/${todo.id}`}>
-                <Button variant="primary">View More</Button>
-              </Link>
-            </Card.Body>
-          </Card>
-        );
+        return <CardItem key={todo.id} todo={todo} />;
       })}
 
       <div
