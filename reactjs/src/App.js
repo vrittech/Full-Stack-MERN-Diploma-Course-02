@@ -1,17 +1,20 @@
-import { Route, Routes } from "react-router-dom";
+import { useSelector } from "react-redux";
 import "./App.css";
-import NoMatch from "./pages/NoMatch";
-import Post from "./pages/Post";
-import PostHome from "./pages/PostHome";
+import Component1 from "./components/mutilevel/Component1";
 
 function App() {
+  const { name, counter } = useSelector((state) => state.app);
   return (
     <div className="App">
-      <Routes>
+      <p>Counter: {counter}</p>
+      <p>Name: {name}</p>
+      <Component1 />
+
+      {/* <Routes>
         <Route path="" element={<PostHome />} />
         <Route path="posts/:postId" element={<Post />} />
         <Route path="*" element={<NoMatch />} />
-      </Routes>
+      </Routes> */}
 
       {/* <Routes>
         <Route path="" element={<Home />} />
