@@ -5,4 +5,5 @@ export const store = configureStore({
   reducer: {
     app: appSlice,
   },
+  devTools: true,
 });

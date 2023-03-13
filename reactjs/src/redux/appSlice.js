@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   counter: 0,
   name: "Arjun",
+  todos: [],
 };
 
 export const appSlice = createSlice({
@@ -26,11 +27,14 @@ export const appSlice = createSlice({
     changeName: (state) => {
       state.name = "Shyam";
     },
+    setTodos: (state, action) => {
+      state.todos = action.payload;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount, changeName } =
+export const { increment, decrement, incrementByAmount, changeName, setTodos } =
   appSlice.actions;
 
 export default appSlice.reducer;

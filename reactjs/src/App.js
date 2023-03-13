@@ -1,14 +1,15 @@
 import { useSelector } from "react-redux";
 import "./App.css";
 import Component1 from "./components/mutilevel/Component1";
+import Component4 from "./components/mutilevel/Component4";
 
 function App() {
   const { name, counter } = useSelector((state) => state.app);
   return (
     <div className="App">
-      <p>Counter: {counter}</p>
-      <p>Name: {name}</p>
-      <Component1 />
+      {/* <p>Counter: {counter}</p>
+      <p>Name: {name}</p> */}
+      <Component4 />
 
       {/* <Routes>
         <Route path="" element={<PostHome />} />

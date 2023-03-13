@@ -1,15 +1,34 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { changeName } from "../../redux/appSlice";
+import React, { useReducer } from "react";
+import AppContext from "../../context/AppContext";
+import Component5 from "./Component5";
+
+const initialState = {
+  counter: 0,
+};
+
+function reducer(state, action) {
+  switch (action.type) {
+    case "increase":
+      return {
+        counter: state.counter + 1,
+      };
+
+    case "increaseByValue":
+      console.log(action);
+      return {
+        counter: state.counter + action.payload,
+      };
+
+    default:
+      break;
+  }
+}
 
 export default function Component4() {
-  const { name, counter } = useSelector((state) => state.app);
-  const dispatch = useDispatch();
+  const [state, dispatch] = useReducer(reducer, initialState);
   return (
-    <div>
-      Component4 {counter} {name}
-      <br />
-      <button onClick={() => dispatch(changeName())}>Change name</button>
-    </div>
+    <AppContext.Provider value={{ state, dispatch }}>
+      <Component5 />
+    </AppContext.Provider>
   );
 }
