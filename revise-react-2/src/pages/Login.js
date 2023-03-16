@@ -1,20 +1,35 @@
 import React, { useState } from "react";
+import useLocalStorage from "../useLocalStorage";
+import { Navigate, useNavigate } from "react-router-dom";
+import Hoc from "../Hoc";
 
-export default function Login() {
+const DEFAULT_EMAIL = "admin@gmail.com";
+const DEFAULT_PASSWORD = "admin";
+
+const Login = (props) => {
+  const { setLocalData, getLocalData } = useLocalStorage();
+  const navigate = useNavigate();
+
   const [state, setState] = useState({
     email: "",
     password: "",
   });
   const handleChange = (event) => {
-    console.log(event, event.target, event.target.value);
-    // console.log(event.target.name, event.target.value);
     setState((prevState) => ({
       ...prevState,
       [event.target.name]: event.target.value,
     }));
   };
-  const handleSubmit = () => {};
-  // console.log(state);
+  const handleSubmit = () => {
+    if (state.email === DEFAULT_EMAIL && state.password === DEFAULT_PASSWORD) {
+      setLocalData("isLoggedIn", true);
+      navigate("/dashboard");
+    }
+  };
+  if (getLocalData("isLoggedIn")) {
+    return <Navigate to="/dashboard" />;
+  }
+
   return (
     <div>
       <input
@@ -35,4 +50,6 @@ export default function Login() {
       <button onClick={handleSubmit}>Login</button>
     </div>
   );
-}
+};
+
+export default Login;
