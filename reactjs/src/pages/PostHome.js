@@ -19,7 +19,7 @@ const PostHome = () => {
 
   useEffect(() => {
     axios
-      .get("https://jsonplaceholder.typicode.com/todos/")
+      .get("http://localhost:8080/api/todos")
       .then((success) => {
         setTodos(success.data);
       })

@@ -1,24 +1,69 @@
-import React from "react";
-import { Container } from "react-bootstrap";
+import React, { useState } from "react";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import NumericInput from "react-numeric-input";
+import { toast } from "react-toastify";
+import { addProductToCart } from "../features/cart/cartSlice";
 
 const ProductPage = () => {
+  const { productId } = useParams();
+  const dispatch = useDispatch();
+  const [quantity, setQuantity] = useState(1);
+  const { products, carts } = useSelector((state) => state.cart);
+  const product = products.find((product) => product.id === productId);
+
+  const handleChangeQuantity = (value) => {
+    setQuantity(value);
+  };
+
+  const handleAddToCart = () => {
+    const findProduct = carts.find((cart) => cart.id === productId);
+    if (findProduct) {
+      toast.error("Product already in cart");
+    } else {
+      dispatch(
+        addProductToCart({
+          ...product,
+          quantity,
+        })
+      );
+      toast.success("Product added to cart");
+    }
+  };
+
   return (
     <div>
-      <Container>
+      <Container
+        style={{
+          marginTop: 20,
+        }}
+      >
         <Card>
-          <Card.Header>Quote</Card.Header>
+          <Card.Header>{product.productName}</Card.Header>
           <Card.Body>
             <blockquote className="blockquote mb-0">
-              <p>
-                {" "}
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-                posuere erat a ante.{" "}
-              </p>
-              <footer className="blockquote-footer">
-                Someone famous in <cite title="Source Title">Source Title</cite>
-              </footer>
+              <p>{product.productDescription}</p>
+              <footer className="blockquote-footer">Rs.{product.price}</footer>
             </blockquote>
+            <br /> <br />
+            <Row>
+              <Col lg={2}>
+                <NumericInput
+                  onChange={handleChangeQuantity}
+                  className="form-control"
+                  min={1}
+                  max={10}
+                  value={quantity}
+                />
+              </Col>
+              <Col>
+                <Button onClick={handleAddToCart} variant="primary">
+                  Add to cart
+                </Button>
+              </Col>
+            </Row>
           </Card.Body>
         </Card>
       </Container>
