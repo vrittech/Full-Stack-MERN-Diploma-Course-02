@@ -2,6 +2,32 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
+
+// database connection
+main()
+  .then(() => console.log("🙌. 🥳. 🎉. 🤩. 🤗"))
+  .catch((err) => console.log(err));
+
+async function main() {
+  await mongoose.connect(
+    "mongodb+srv://arjunghimire0714:5To8pNNAV5uDqgw2@cluster0.fm2salw.mongodb.net/?retryWrites=true&w=majority"
+  );
+}
+
+const { Schema } = mongoose;
+
+const todoSchema = new Schema(
+  {
+    title: String,
+    status: String,
+  },
+  {
+    timestamps: true,
+  }
+);
+
+const Todo = mongoose.model("Todo", todoSchema);
 
 app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
@@ -42,17 +68,35 @@ const TODOS = [
   },
 ];
 
+// create single todo
+app.post("/api/todos", (req, res) => {
+  const todo = new Todo({
+    title: req.body.title,
+    status: req.body.status,
+  });
+  todo
+    .save()
+    .then((response) => {
+      res.send(response);
+    })
+    .catch((error) => res.send(error));
+});
+
 // get all todos
 app.get("/api/todos", (req, res) => {
-  res.send(TODOS);
+  const todos = Todo.find();
+  todos
+    .then((response) => res.send(response))
+    .catch((error) => res.send(error));
 });
 
 // get single todo
 app.get("/api/todos/:todoId", (req, res) => {
   const todoId = req.params.todoId;
-  // console.log(req.body, req.query, req.params);
-  const findTodo = TODOS.find((todo) => todo.id === +todoId);
-  res.send(findTodo);
+  const findTodo = Todo.findOne({ _id: todoId });
+  findTodo
+    .then((response) => res.send(response))
+    .catch((error) => res.send(error));
 });
 
 // delete single todo
@@ -76,3 +120,10 @@ app.put("/api/todos/:todoId", (req, res) => {
 app.listen(8080, () => {
   console.log("Success !");
 });
+
+/*
+
+username: arjunghimire0714
+password: 5To8pNNAV5uDqgw2
+
+*/
