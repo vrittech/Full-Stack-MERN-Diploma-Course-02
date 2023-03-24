@@ -4,6 +4,8 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
+app.use(cors());
+
 // database connection
 main()
   .then(() => console.log("🙌. 🥳. 🎉. 🤩. 🤗"))
@@ -33,43 +35,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
-app.use(cors());
 // CRUD
 // create => POST
 // read  => GET
 // update => PUT
 // delete => DELETE
 
-const TODOS = [
-  {
-    id: 1,
-    status: "completed",
-    title: "Todo 1",
-  },
-  {
-    id: 2,
-    status: "pending",
-    title: "Todo 2",
-  },
-  {
-    id: 3,
-    status: "completed",
-    title: "Todo 3",
-  },
-  {
-    id: 4,
-    status: "completed",
-    title: "Todo 4",
-  },
-  {
-    id: 5,
-    status: "completed",
-    title: "Todo 5",
-  },
-];
-
 // create single todo
 app.post("/api/todos", (req, res) => {
+  console.log("REQUEST", req.body, req.params, req.query);
   const todo = new Todo({
     title: req.body.title,
     status: req.body.status,
@@ -77,9 +51,23 @@ app.post("/api/todos", (req, res) => {
   todo
     .save()
     .then((response) => {
+      console.log(response);
       res.send(response);
     })
     .catch((error) => res.send(error));
+  // try {
+  //   const todo = new Todo({
+  //     title: req.body.title,
+  //     status: req.body.status,
+  //   });
+  //   const response = await todo.save();
+  //   hello = 2;
+  //   res.send(response);
+  // } catch (error) {
+  //   res.send({
+  //     message: "Error",
+  //   });
+  // }
 });
 
 // get all todos
@@ -102,19 +90,29 @@ app.get("/api/todos/:todoId", (req, res) => {
 // delete single todo
 app.delete("/api/todos/:todoId", (req, res) => {
   const todoId = req.params.todoId;
-  // console.log(req.body, req.query, req.params);
-  const filterTodos = TODOS.filter((todo) => todo.id !== +todoId);
-  res.send(filterTodos);
+  const deleteTodo = Todo.deleteOne({ _id: todoId });
+  deleteTodo
+    .then((response) => res.send(response))
+    .catch((error) => res.send(error));
 });
 
 // update single todo
 app.put("/api/todos/:todoId", (req, res) => {
   const todoId = req.params.todoId;
-  // console.log(TODOS);
-  const findTodoIndex = TODOS.findIndex((todo) => todo.id === +todoId);
-  TODOS[findTodoIndex] = req.body;
-  // console.log(req.body, req.query, req.params, findTodoIndex, TODOS);
-  res.send(TODOS);
+  console.log(todoId, req.body);
+  const updateTodo = Todo.findByIdAndUpdate(
+    { _id: todoId },
+    {
+      status: req.body.status,
+      title: req.body.title,
+    },
+    {
+      new: true,
+    }
+  );
+  updateTodo
+    .then((response) => res.send(response))
+    .catch((error) => res.send(error));
 });
 
 app.listen(8080, () => {
