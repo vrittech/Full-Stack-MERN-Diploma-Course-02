@@ -1,5 +1,6 @@
 const { Category } = require("../models/category");
 const slugify = require("slugify");
+const { adminMiddleware } = require("../middleware");
 
 const getCategories = async (req, res) => {
   try {
@@ -10,7 +11,7 @@ const getCategories = async (req, res) => {
   }
 };
 
-const createCategory = async (req, res) => {
+const createCategory = async (req, res, next) => {
   try {
     const category = new Category({
       title: req.body.title,
