@@ -12,14 +12,16 @@ const errorHandler = (res, message) => {
 
 const createUser = async (req, res) => {
   try {
-    const { fullname, email, password } = req.body;
+    const { fullname, phoneNumber, email } = req.body;
     if (!fullname) {
       return errorHandler(res, "Fullname is required");
     }
 
-    const user = await User.findOne({ email: req.body.email });
+    const user = await User.findOne({
+      $and: [{ email }, { phoneNumber }],
+    });
     if (user) {
-      res.send({
+      res.status(403).send({
         message: "User already exist !!!",
       });
       return;
@@ -32,7 +34,7 @@ const createUser = async (req, res) => {
         fullname: req.body.fullname,
         email: req.body.email,
         password: hash,
-        userType: req.body.userType,
+        phoneNumber: req.body.phoneNumber,
       });
       user
         .save()
@@ -73,8 +75,27 @@ const getUsers = async (req, res) => {
   }
 };
 
+const getUser = async (req, res) => {
+  try {
+    console.log(res.user);
+    const userId = req.params.userId;
+
+    if (res.user._id === userId) {
+      const users = await User.findOne({ _id: userId });
+      return res.send(users);
+    } else {
+      return res
+        .status(401)
+        .send({ status: false, message: "Unauthorized user" });
+    }
+  } catch (error) {
+    return res.send(error);
+  }
+};
+
 module.exports = {
   createUser,
   login,
   getUsers,
+  getUser,
 };

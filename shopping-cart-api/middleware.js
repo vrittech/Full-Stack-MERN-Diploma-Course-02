@@ -15,10 +15,11 @@ const adminMiddleware = (req, res, next) => {
       return res.status(401).send({ status: false, message: "Invalid token" });
     if (decoded.userType === "admin") {
       next();
+    } else {
+      return res
+        .status(401)
+        .send({ status: false, message: "Unauthorized user" });
     }
-    return res
-      .status(401)
-      .send({ status: false, message: "Unauthorized user" });
   });
 };
 

@@ -9,6 +9,8 @@ import { ToastContainer } from "react-toastify";
 import { useEffect } from "react";
 import { getProducts } from "./features/cart/cartSlice";
 import { useDispatch } from "react-redux";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -23,6 +25,8 @@ function App() {
         <Route path="product/:productId" element={<ProductPage />} />
         <Route path="cart" element={<CartPage />} />
         <Route path="about" element={<AboutPage />} />
+        <Route path="login" element={<LoginPage />} />
+        <Route path="register" element={<RegisterPage />} />
         <Route path="*" element={<NoMatchPage />} />
       </Routes>
       <ToastContainer position="bottom-center" />
