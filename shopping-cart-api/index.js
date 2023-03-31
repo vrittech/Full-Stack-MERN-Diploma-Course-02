@@ -23,6 +23,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
+app.use(express.static("public"));
+
 userRoutes(app);
 categoriesRoutes(app);
 productsRoutes(app);

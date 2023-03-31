@@ -11,11 +11,18 @@ import { getProducts } from "./features/cart/cartSlice";
 import { useDispatch } from "react-redux";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+import Dashboard from "./pages/Dashboard";
+import ListCategories from "./pages/admin/ListCategories";
+import CreateCategory from "./pages/admin/CreateCategory";
+import { getUserData } from "./features/user/userSlice";
+import ListProducts from "./pages/admin/ListProducts";
+import CreateProduct from "./pages/admin/CreateProduct";
 
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getProducts());
+    dispatch(getUserData());
   }, []);
   return (
     <>
@@ -27,6 +34,11 @@ function App() {
         <Route path="about" element={<AboutPage />} />
         <Route path="login" element={<LoginPage />} />
         <Route path="register" element={<RegisterPage />} />
+        <Route path="dashboard" element={<Dashboard />} />
+        <Route path="admin/categories" element={<ListCategories />} />
+        <Route path="admin/categories/create" element={<CreateCategory />} />
+        <Route path="admin/products" element={<ListProducts />} />
+        <Route path="admin/products/create" element={<CreateProduct />} />
         <Route path="*" element={<NoMatchPage />} />
       </Routes>
       <ToastContainer position="bottom-center" />

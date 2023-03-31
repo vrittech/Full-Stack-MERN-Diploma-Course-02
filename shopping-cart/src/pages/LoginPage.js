@@ -4,8 +4,14 @@ import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import { toast } from "react-toastify";
 import cookie from "react-cookies";
+import { setUserData } from "../features/user/userSlice";
+import { useDispatch } from "react-redux";
+import getUserDetailsFromToken from "../helpers/jwt";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [state, setState] = useState({
     email: "",
     password: "",
@@ -29,10 +35,15 @@ const LoginPage = () => {
         body: JSON.stringify(state),
       });
       const res = await response.json();
-      console.log("ACC", res);
       if (response.status === 200) {
+        dispatch(setUserData(res));
+        const userData = getUserDetailsFromToken(res?.accessToken);
         toast.success("Login successfully");
         cookie.save("accessToken", res.accessToken, { path: "/" });
+        if (userData?.userType === "user") {
+          return navigate("/");
+        }
+        navigate("/dashboard");
       } else {
         toast.error(res.message);
       }
