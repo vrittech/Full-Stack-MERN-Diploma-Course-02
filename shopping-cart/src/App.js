@@ -1,29 +1,20 @@
 import { Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import NavBar from "./components/Navbar";
 import AboutPage from "./pages/About";
+import CreateCategory from "./pages/admin/CreateCategory";
+import CreateProduct from "./pages/admin/CreateProduct";
+import ListCategories from "./pages/admin/ListCategories";
+import ListProducts from "./pages/admin/ListProducts";
 import CartPage from "./pages/Cart";
+import Dashboard from "./pages/Dashboard";
 import HomePage from "./pages/Home";
+import LoginPage from "./pages/LoginPage";
 import NoMatchPage from "./pages/NoMatch";
 import ProductPage from "./pages/Product";
-import { ToastContainer } from "react-toastify";
-import { useEffect } from "react";
-import { getProducts } from "./features/cart/cartSlice";
-import { useDispatch } from "react-redux";
-import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
-import Dashboard from "./pages/Dashboard";
-import ListCategories from "./pages/admin/ListCategories";
-import CreateCategory from "./pages/admin/CreateCategory";
-import { getUserData } from "./features/user/userSlice";
-import ListProducts from "./pages/admin/ListProducts";
-import CreateProduct from "./pages/admin/CreateProduct";
 
 function App() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getProducts());
-    dispatch(getUserData());
-  }, []);
   return (
     <>
       <NavBar />

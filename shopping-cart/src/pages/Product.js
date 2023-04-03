@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,13 +6,14 @@ import { useParams } from "react-router-dom";
 import NumericInput from "react-numeric-input";
 import { toast } from "react-toastify";
 import { addProductToCart } from "../features/cart/cartSlice";
+import { fetchProduct } from "../features/product/productSlice";
 
 const ProductPage = () => {
-  const { productId } = useParams();
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(1);
-  const { products, carts } = useSelector((state) => state.cart);
-  const product = products.find((product) => product.id === productId);
+  const { carts } = useSelector((state) => state.cart);
+  const { product } = useSelector((state) => state.product);
+  const { productId } = useParams();
 
   const handleChangeQuantity = (value) => {
     setQuantity(value);
@@ -33,6 +34,9 @@ const ProductPage = () => {
     }
   };
 
+  useEffect(() => {
+    dispatch(fetchProduct(productId));
+  }, []);
   return (
     <div>
       <Container
@@ -41,10 +45,16 @@ const ProductPage = () => {
         }}
       >
         <Card>
-          <Card.Header>{product.productName}</Card.Header>
+          <Card.Header>{product.title}</Card.Header>
+          <Card.Img
+            style={{
+              width: 200,
+            }}
+            src={`http://localhost:8080/${product.imageURL}`}
+          ></Card.Img>
           <Card.Body>
             <blockquote className="blockquote mb-0">
-              <p>{product.productDescription}</p>
+              <p>{product.description}</p>
               <footer className="blockquote-footer">Rs.{product.price}</footer>
             </blockquote>
             <br /> <br />

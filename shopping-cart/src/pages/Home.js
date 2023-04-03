@@ -1,13 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
+import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import ProductCart from "../components/ProductCart";
+import { fetchProducts } from "../features/product/productSlice";
 
 const PER_PAGE_COUNT = 10;
 
 const HomePage = () => {
-  const products = useSelector((state) => state.cart.products);
+  const dispatch = useDispatch();
+  const { isLoading, products, error } = useSelector((state) => state.product);
   const [page, setPage] = useState(1);
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, []);
   return (
     <div>
       <Container

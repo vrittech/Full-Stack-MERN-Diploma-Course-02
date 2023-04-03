@@ -10,9 +10,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 
 export default function ProductCart(props) {
+  console.log("PROPS", props);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { id, price, productName, productDescription, image } = props;
+  const { _id, price, title, description, imageURL, category } = props;
   const { carts } = useSelector((state) => state.cart);
 
   const handleNavigateCart = (productId) => {
@@ -35,21 +36,22 @@ export default function ProductCart(props) {
     dispatch(removeProductFromCart(productId));
     toast.error("Product removed from cart");
   };
-  const findProduct = carts.find((cart) => cart.id === id);
+  const findProduct = carts.find((cart) => cart.id === _id);
   return (
     <Card
-      onClick={() => handleNavigateCart(id)}
+      onClick={() => handleNavigateCart(_id)}
       style={{ marginBottom: "10px", cursor: "pointer" }}
     >
-      <Card.Img variant="top" src={image} />
+      <Card.Img variant="top" src={`http://localhost:8080/${imageURL}`} />
       <Card.Body>
-        <Card.Title>{productName}</Card.Title>
-        <Card.Text>{productDescription}</Card.Text>
+        <Card.Title>{title}</Card.Title>
+        <Card.Text>{description}</Card.Text>
+        <Card.Link>{category?.title}</Card.Link>
         <Card.Subtitle>Rs. {price}</Card.Subtitle>
         <br />
         {findProduct ? (
           <Button
-            onClick={(event) => handleRemoveFromCart(event, id)}
+            onClick={(event) => handleRemoveFromCart(event, _id)}
             variant="danger"
           >
             Remove from Cart

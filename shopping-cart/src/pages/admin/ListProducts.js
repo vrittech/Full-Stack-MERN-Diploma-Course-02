@@ -1,26 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Button, Container } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { fetchProducts } from "../../features/product/productSlice";
 
 export default function ListProducts() {
-  const [products, setProducts] = useState([]);
-
-  const getProducts = async () => {
-    try {
-      const response = await fetch("http://localhost:8080/api/products");
-      const res = await response.json();
-      console.log(res);
-      if (response.status === 200) {
-        setProducts(res.payload.data);
-      }
-    } catch (error) {
-      setProducts([]);
-    }
-  };
+  const dispatch = useDispatch();
+  const { products } = useSelector((state) => state.product);
 
   useEffect(() => {
-    getProducts();
+    dispatch(fetchProducts());
   }, []);
 
   return (

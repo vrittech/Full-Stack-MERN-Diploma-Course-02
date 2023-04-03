@@ -6,8 +6,11 @@ import { BrowserRouter } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import App from "./App";
 import { store } from "./app/store";
+import { getUserData } from "./features/user/userSlice";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
+
+store.dispatch(getUserData());
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

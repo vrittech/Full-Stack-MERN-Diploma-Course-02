@@ -39,19 +39,23 @@ const CartPage = () => {
           </thead>
           <tbody>
             {carts.map((cart, index) => (
-              <tr key={cart.id}>
+              <tr key={cart._id}>
                 <td>{index + 1}</td>
                 <td>
-                  <Image width={100} thumbnail src={cart.image} />
+                  <Image
+                    width={100}
+                    thumbnail
+                    src={`http://localhost:8080/${cart.imageURL}`}
+                  />
                 </td>
-                <td>{cart.productName}</td>
+                <td>{cart.title}</td>
                 <td>{cart.price}</td>
                 <td>{cart.quantity}</td>
                 <td>{cart.price * cart.quantity}</td>
                 <td>
                   <Button
                     variant="danger"
-                    onClick={() => handleDeleteProduct(cart.id)}
+                    onClick={() => handleDeleteProduct(cart._id)}
                   >
                     X
                   </Button>
