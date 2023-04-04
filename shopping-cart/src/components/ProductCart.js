@@ -36,7 +36,7 @@ export default function ProductCart(props) {
     dispatch(removeProductFromCart(productId));
     toast.error("Product removed from cart");
   };
-  const findProduct = carts.find((cart) => cart.id === _id);
+  const findProduct = carts.find((cart) => cart._id === _id);
   return (
     <Card
       onClick={() => handleNavigateCart(_id)}

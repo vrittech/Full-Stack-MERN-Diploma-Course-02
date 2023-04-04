@@ -8,6 +8,7 @@ const { userRoutes } = require("./routes/user.js");
 const { categoriesRoutes } = require("./routes/category.js");
 const { productsRoutes } = require("./routes/product.js");
 const { imagesRoutes } = require("./routes/image.js");
+const { ordersRoutes } = require("./routes/order.js");
 
 app.use(cors());
 
@@ -29,6 +30,7 @@ userRoutes(app);
 categoriesRoutes(app);
 productsRoutes(app);
 imagesRoutes(app);
+ordersRoutes(app);
 
 app.listen(8080, () => {
   console.log("Success !");

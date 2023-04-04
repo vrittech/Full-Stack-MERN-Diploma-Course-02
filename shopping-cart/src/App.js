@@ -5,8 +5,10 @@ import AboutPage from "./pages/About";
 import CreateCategory from "./pages/admin/CreateCategory";
 import CreateProduct from "./pages/admin/CreateProduct";
 import ListCategories from "./pages/admin/ListCategories";
+import ListOrders from "./pages/admin/ListOrders";
 import ListProducts from "./pages/admin/ListProducts";
 import CartPage from "./pages/Cart";
+import CheckoutPage from "./pages/CheckoutPage";
 import Dashboard from "./pages/Dashboard";
 import HomePage from "./pages/Home";
 import LoginPage from "./pages/LoginPage";
@@ -25,11 +27,15 @@ function App() {
         <Route path="about" element={<AboutPage />} />
         <Route path="login" element={<LoginPage />} />
         <Route path="register" element={<RegisterPage />} />
+        <Route path="checkout" element={<CheckoutPage />} />
+
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="admin/categories" element={<ListCategories />} />
         <Route path="admin/categories/create" element={<CreateCategory />} />
         <Route path="admin/products" element={<ListProducts />} />
         <Route path="admin/products/create" element={<CreateProduct />} />
+        <Route path="admin/orders" element={<ListOrders />} />
+
         <Route path="*" element={<NoMatchPage />} />
       </Routes>
       <ToastContainer position="bottom-center" />

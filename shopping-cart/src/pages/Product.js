@@ -5,7 +5,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import NumericInput from "react-numeric-input";
 import { toast } from "react-toastify";
-import { addProductToCart } from "../features/cart/cartSlice";
+import {
+  addProductToCart,
+  removeProductFromCart,
+} from "../features/cart/cartSlice";
 import { fetchProduct } from "../features/product/productSlice";
 
 const ProductPage = () => {
@@ -20,7 +23,7 @@ const ProductPage = () => {
   };
 
   const handleAddToCart = () => {
-    const findProduct = carts.find((cart) => cart.id === productId);
+    const findProduct = carts.find((cart) => cart._id === productId);
     if (findProduct) {
       toast.error("Product already in cart");
     } else {
@@ -34,9 +37,17 @@ const ProductPage = () => {
     }
   };
 
+  const handleRemoveFromCart = (productId) => {
+    dispatch(removeProductFromCart(productId));
+    toast.error("Product removed from cart");
+  };
+
   useEffect(() => {
     dispatch(fetchProduct(productId));
   }, []);
+
+  const findProduct = carts.find((cart) => cart._id === productId);
+
   return (
     <div>
       <Container
@@ -69,9 +80,21 @@ const ProductPage = () => {
                 />
               </Col>
               <Col>
-                <Button onClick={handleAddToCart} variant="primary">
-                  Add to cart
-                </Button>
+                {findProduct ? (
+                  <Button
+                    onClick={(event) => handleRemoveFromCart(product._id)}
+                    variant="danger"
+                  >
+                    Remove from Cart
+                  </Button>
+                ) : (
+                  <Button
+                    onClick={(event) => handleAddToCart(event, product)}
+                    variant="primary"
+                  >
+                    Add to cart
+                  </Button>
+                )}
               </Col>
             </Row>
           </Card.Body>

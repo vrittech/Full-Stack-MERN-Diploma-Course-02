@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Table from "react-bootstrap/Table";
 import Image from "react-bootstrap/Image";
 import { removeProductFromCart } from "../features/cart/cartSlice";
+import { Link } from "react-router-dom";
 
 const CartPage = () => {
   const dispatch = useDispatch();
@@ -68,6 +69,9 @@ const CartPage = () => {
             </tr>
           </tbody>
         </Table>
+        <Link to="/checkout">
+          <Button variant="primary">Checkout</Button>
+        </Link>
       </Container>
     </div>
   );
