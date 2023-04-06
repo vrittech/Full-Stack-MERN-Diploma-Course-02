@@ -23,7 +23,7 @@ export default function ListCategories() {
   }, []);
 
   return (
-    <Container className="mt-5">
+    <Container>
       <Link to="/admin/categories/create">
         <Button className="mb-3" variant="primary">
           Create Category

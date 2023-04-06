@@ -1,6 +1,10 @@
+import { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import NavBar from "./components/Navbar";
+import AdminLayout from "./components/AdminLayout";
+import AdminNavBar from "./components/AdminNavBar";
+import ErrorBoundary from "./components/ErrorBoundary";
+import UserLayout from "./components/UserLayout";
 import AboutPage from "./pages/About";
 import CreateCategory from "./pages/admin/CreateCategory";
 import CreateProduct from "./pages/admin/CreateProduct";
@@ -19,22 +23,31 @@ import RegisterPage from "./pages/RegisterPage";
 function App() {
   return (
     <>
-      <NavBar />
       <Routes>
-        <Route path="" element={<HomePage />} />
-        <Route path="product/:productId" element={<ProductPage />} />
-        <Route path="cart" element={<CartPage />} />
-        <Route path="about" element={<AboutPage />} />
-        <Route path="login" element={<LoginPage />} />
-        <Route path="register" element={<RegisterPage />} />
-        <Route path="checkout" element={<CheckoutPage />} />
-
-        <Route path="dashboard" element={<Dashboard />} />
-        <Route path="admin/categories" element={<ListCategories />} />
-        <Route path="admin/categories/create" element={<CreateCategory />} />
-        <Route path="admin/products" element={<ListProducts />} />
-        <Route path="admin/products/create" element={<CreateProduct />} />
-        <Route path="admin/orders" element={<ListOrders />} />
+        <Route element={<UserLayout />}>
+          <Route
+            path=""
+            element={
+              <ErrorBoundary>
+                <HomePage />
+              </ErrorBoundary>
+            }
+          />
+          <Route path="product/:productId" element={<ProductPage />} />
+          <Route path="cart" element={<CartPage />} />
+          <Route path="about" element={<AboutPage />} />
+          <Route path="login" element={<LoginPage />} />
+          <Route path="register" element={<RegisterPage />} />
+          <Route path="checkout" element={<CheckoutPage />} />
+        </Route>
+        <Route path="admin" element={<AdminLayout />}>
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="categories" element={<ListCategories />} />
+          <Route path="categories/create" element={<CreateCategory />} />
+          <Route path="products" element={<ListProducts />} />
+          <Route path="products/create" element={<CreateProduct />} />
+          <Route path="orders" element={<ListOrders />} />
+        </Route>
 
         <Route path="*" element={<NoMatchPage />} />
       </Routes>

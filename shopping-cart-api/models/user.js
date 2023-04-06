@@ -25,6 +25,10 @@ const userSchema = new Schema(
       enum: ["user", "admin"],
       default: "user",
     },
+    view: {
+      Type: Number,
+      default: 0,
+    },
   },
   {
     timestamps: true,

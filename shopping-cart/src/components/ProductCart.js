@@ -10,7 +10,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 
 export default function ProductCart(props) {
-  console.log("PROPS", props);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { _id, price, title, description, imageURL, category } = props;

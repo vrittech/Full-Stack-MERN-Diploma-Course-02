@@ -1,17 +1,16 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
-import { toast } from "react-toastify";
+import Form from "react-bootstrap/Form";
 import cookie from "react-cookies";
-import { setUserData } from "../features/user/userSlice";
 import { useDispatch } from "react-redux";
-import getUserDetailsFromToken from "../helpers/jwt";
-import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { toast } from "react-toastify";
+import { setUserData } from "../features/user/userSlice";
 
 const LoginPage = () => {
+  const location = useLocation();
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const [state, setState] = useState({
     email: "",
     password: "",
@@ -37,13 +36,8 @@ const LoginPage = () => {
       const res = await response.json();
       if (response.status === 200) {
         dispatch(setUserData(res));
-        const userData = getUserDetailsFromToken(res?.accessToken);
         toast.success("Login successfully");
         cookie.save("accessToken", res.accessToken, { path: "/" });
-        if (userData?.userType === "user") {
-          return navigate("/");
-        }
-        navigate("/dashboard");
       } else {
         toast.error(res.message);
       }
@@ -51,6 +45,7 @@ const LoginPage = () => {
       toast.error("Login failed");
     }
   };
+  console.log(location);
 
   return (
     <Container>

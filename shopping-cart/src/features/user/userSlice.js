@@ -31,9 +31,13 @@ export const userSlice = createSlice({
       state.isUserLoggedIn = !isEmpty(userData);
       state.userData = userData;
     },
+    userLogout: (state) => {
+      state.userData = {};
+      state.isUserLoggedIn = false;
+    },
   },
 });
 
-export const { setUserData, getUserData } = userSlice.actions;
+export const { setUserData, getUserData, userLogout } = userSlice.actions;
 
 export default userSlice.reducer;

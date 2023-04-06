@@ -14,7 +14,7 @@ export default function ListProducts() {
   }, []);
 
   return (
-    <Container className="mt-5">
+    <Container>
       <Link to="/admin/products/create">
         <Button className="mb-3" variant="primary">
           Create Product
